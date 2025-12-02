@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const vaultRoute = require('./routes/vault');
 
 // استدعاء ملف الحماية الخاص بك
 const applySecurity = require('./utils/securityConfig');
@@ -28,6 +29,7 @@ applySecurity(app);
 
 // --- Routes Middlewares ---
 app.use('/api/user', authRoute);
+app.use('/api/vault', vaultRoute);
 
 // تشغيل السيرفر
 app.listen(process.env.PORT || 5000, () => console.log('Server Up and Running!'));
